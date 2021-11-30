@@ -7,11 +7,12 @@
   <title>Friendlist</title>
 </head>
 <body>
-  <form>
-    <input type="text" name="fName" placeholder="fName"/>
-    <input type="text" name="lName" placeholder="lName"/>
-    <input type="email" name="email" placeholder="email"/>
-    <input type="number" name="phoneNumber" placeholder="phoneNumber"/>
+  {{ friendModel | json }}
+  <form #myForm="ngForm" name="myForm">
+    <input #fName="ngModel" pattern="[A-Za-z]+" [class.invalid]="fName.invalid && fName.touched" [(ngModel)]="friendModel.fName" type="text" name="fName" placeholder="fName" required/>
+    <input #lName="ngModel" pattern="[A-Za-z]+" [class.invalid]="lName.invalid && lName.touched" [(ngModel)]="friendModel.lName" type="text" name="lName" placeholder="lName" required/>
+    <input #email="ngModel" [class.invalid]="email.invalid && email.touched" [(ngModel)]="friendModel.email" type="email" name="email" placeholder="email" required/>
+    <input #phoneNumber="ngModel" pattern="^[0-9]*$" [class.invalid]="phoneNumber.invalid && phoneNumber.touched" [(ngModel)]="friendModel.phoneNumber" type="text" name="phoneNumber" placeholder="phoneNumber" required/>
     <select id="options">
       <option>Select</option>
       <option *ngFor='let opt of options;'>{{opt}}</option>

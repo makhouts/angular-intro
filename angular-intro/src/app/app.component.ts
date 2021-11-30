@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Friend } from './friend';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-   public options = ['html', 'css', 'php', 'js'];
-  //  : Array<string> 
+   public options: Array<string>  = ['html', 'css', 'php', 'js'];
+
+   friendModel = new Friend('','','','');
+
 }
