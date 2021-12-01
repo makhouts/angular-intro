@@ -10,7 +10,7 @@ import { AddFriendService } from './add-friend.service';
 })
 export class AppComponent {
    public options: Array<string>  = ['html', 'css', 'php', 'js'];
-   friendModel = new Friend('','','','');
+   friendModel = new Friend('','','','','');
    friendList:any;
 
    async ngOnInit() {
@@ -22,7 +22,7 @@ export class AppComponent {
 
    }
 
-    myFunc() {
+    async myFunc() {
     this.addFriendService.addFriend(this.friendModel)
     .subscribe({
       next(position) {
@@ -32,7 +32,7 @@ export class AppComponent {
         console.log('Error Getting Location: ', msg);
       }
     });
-    
+    this.friendList = await this.getFriends('http://localhost:9000/allFriends');
    };
 
    async getFriends(url:string): Promise<any> {
