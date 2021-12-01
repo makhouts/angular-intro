@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
-const PORT = 6969;
+const PORT = 9000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}) );
@@ -24,8 +24,14 @@ app.get('/', function (request, response) {
     response.send('Hello from server');
 });
 
-app.post('/', function (request, response) {
-    response.status(200).send({"message": "Data received"});
+app.get('/allFriends', function (request, response) {
+    response.send(allFriends);
+});
+
+app.post('/allFriends', function (request, response) {
+    console.log(request)
+    allFriends.push(request.body);
+    response.send(allFriends);
 });
 
 
