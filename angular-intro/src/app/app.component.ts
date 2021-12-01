@@ -33,6 +33,7 @@ export class AppComponent {
       }
     });
     this.friendList = await this.getFriends('http://localhost:9000/allFriends');
+    alert('Friend added!');
    };
 
    async getFriends(url:string): Promise<any> {
